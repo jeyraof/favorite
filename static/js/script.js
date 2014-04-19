@@ -96,7 +96,7 @@ function createMetaHtml(data) {
   var paragraph_end = document.createElement('span');
   paragraph_end.className = 'paragraph-end';
   anchor_title.appendChild(paragraph_end);
-  anchor_subtitle.appendChild(paragraph_end);
+  anchor_subtitle.appendChild(paragraph_end.cloneNode(true));
   title_container.appendChild(anchor_title);
   title_container.appendChild(anchor_subtitle);
   var detail_container = document.createElement('div');
