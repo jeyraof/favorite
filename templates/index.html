@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Favorite</title>
+        {% if debug %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/pure.min.css') }}"/>
+            <script src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}"></script>
+        {% else %}
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.4.2/pure-min.css"/>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
+    </head>
+    <body>
+        <div class="home-menu pure-menu-fixed">
+            <div class="central-wrapper">
+                <div class="pure-menu pure-menu-open pure-menu-horizontal">
+                    <a href="#" class="pure-menu-heading">Monodiary.net</a>
+                    <ul>
+                        <li class="pure-menu-selected"><a href="#">Favorites</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="item">
+                <div class="thumb">
+                    <img src="http://wlog.cn/demo/waterfall/images/002.jpg" alt="이미지"/>
+                </div>
+                <div class="meta">
+                    <span class="name">이름 이름 이름 이름 이름 이름 이름 이름 이</span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            jQuery(function ($) {
+                var $container = $('.container');
+
+                $container.imagesLoaded(function () {
+                    $container.masonry({
+                        itemSelector: '.item',
+                        columnWidth: 285,
+                        isAnimated: true
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background: #e5e5e5;
+}
+
+.home-menu {
+  background: #ffffff;
+  border-bottom: 1px solid #b7b7b7;
+  z-index: 10;
+}
+
+.central-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.container {
+  margin: 35px auto 0;
+  max-width: 1140px;
+  padding: 10px;
+
+  .item {
+    @tile-width: 270px;
+    width: @tile-width;
+    overflow: hidden;
+    margin: 10px 5px;
+
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    .thumb {
+      position: relative;
+
+      img {
+        width: @tile-width;
+        display: block;
+      }
+    }
+
+    .meta {
+      background: #ffffff;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 17px;
+
+      .name {
+        font-family: hg100;
+      }
+    }
+  }
+}
