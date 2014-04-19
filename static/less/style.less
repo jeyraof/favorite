@@ -79,6 +79,7 @@ html {
     width: @tile-width;
     overflow: hidden;
     margin: 10px 5px;
+    background: #ffffff;
 
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -92,6 +93,32 @@ html {
     .thumb {
       position: relative;
 
+
+      .empty {
+        margin: 5px;
+        padding: 0;
+
+        border: 1px dashed #cccccc;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 4px;
+
+        a {
+          display: block;
+          text-align: center;
+          height: 50px;
+          line-height: 50px;
+          font-size: 20px;
+
+          color: #0078e7;
+          text-decoration: none;
+
+          &:hover {
+            background: #f2f2f2;
+          }
+        }
+      }
+
       img {
         width: @tile-width;
         display: block;
@@ -99,7 +126,6 @@ html {
     }
 
     .meta {
-      background: #ffffff;
       padding: 10px;
       font-size: 14px;
       line-height: 17px;

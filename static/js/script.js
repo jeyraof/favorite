@@ -74,6 +74,16 @@ function createThumbHtml(data) {
     thumb_img.setAttribute('src', data.picture);
     thumb_img.setAttribute('alt', data.title + ' - ' + data.subtitle);
     thumb.appendChild(thumb_img);
+  } else {
+    var thumb_empty = document.createElement('div');
+    thumb_empty.className = 'empty';
+    var empty_anchor = document.createElement('a');
+    var empty_icon = document.createElement('i');
+    empty_icon.className = 'fa fa-picture-o';
+    empty_anchor.appendChild(empty_icon);
+    empty_anchor.appendChild(document.createTextNode(' Upload'));
+    thumb_empty.appendChild(empty_anchor);
+    thumb.appendChild(thumb_empty);
   }
   return thumb;
 }
