@@ -1,5 +1,5 @@
-var global_pos = null;
-var global_end = false;
+global_pos = null;
+global_end = false;
 
 $(document).ready(function () {
   // toggle new-item form
@@ -25,33 +25,37 @@ $(document).ready(function () {
 });
 
 function callFavorites(pos) {
+  var $container = $('.container');
   var url = '/favorite/list';
   if (pos) {
     url = url + '?pos=' + pos;
   }
-  $.get(
-    url,
-    function(data) {
+  var dummy = [];
+  var dummy_flag = false;
+  $.ajax({
+    url: url,
+    async: false,
+    success: function (data) {
       if (data.ok) {
+        debug = data;
         if (data.favorites.length === 0) {
           global_end = true;
           alert('last of favorites.');
         } else {
-          var $container = $('.container');
           $.each(data.favorites, function(i, favorite) {
             var favoriteHtml = createFavoriteHtml(favorite);
-            $container.append(favoriteHtml);
-            $container.imagesLoaded(function() {
-              $container.isotope('appended', favoriteHtml).isotope('layout');
-            });
+            dummy.push(favoriteHtml);
             global_pos = favorite.id;
           });
         }
       } else {
+        dummy_flag = true;
         alert('error happened.');
       }
-    }
-  )
+    },
+    dataType: 'json'
+  });
+  $container.append(dummy);
 }
 
 function createFavoriteHtml(data) {

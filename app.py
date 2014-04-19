@@ -26,7 +26,7 @@ def get_favorites(f_id=None):
 
     else:
         pos = request.args.get('pos', None)
-        favorites = Favorite.query.filter(Favorite.id <= pos) if pos else Favorite.query
+        favorites = Favorite.query.filter(Favorite.id < pos) if pos else Favorite.query
         favorites = favorites.order_by('-id').limit(Config.ITEM_EA).all()
 
         favorite_list = []
