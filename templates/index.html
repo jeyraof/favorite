@@ -13,9 +13,9 @@
         <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </head>
     <body>
         <div class="central-wrapper">
@@ -28,10 +28,6 @@
                     </fieldset>
 
                     <fieldset>
-                        <div class="pure-controls">
-                            <input name="pic" type="file"/>
-                        </div>
-
                         <div class="pure-controls">
                             <label for="taken" class="pure-checkbox">
                                 <input id="taken" name="taken" type="checkbox">
@@ -64,51 +60,11 @@
             asdf
         </div>
 
-        <div class="container">
-            <div class="item">
-                <div class="thumb">
-                    <img src="http://itemimage.cjmall.com/goods_images/27/968/27071968L.jpg" alt="Sperry - A/O 2-Eye Sahara"/>
-                </div>
-                <div class="meta">
-                    <h2 class="title-container">
-                        <a href="#" title="" class="title">
-                            Sperry
-                            <span class="paragraph-end"></span>
-                        </a>
-                        <a href="#" title="" class="subtitle">
-                            A/O 2-Eye Sahara
-                            <span class="paragraph-end"></span>
-                        </a>
-                    </h2>
-                    <div class="detail-container">
-                        <span class="uid">197640</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="thumb">
-                    <img src="http://image.nsmall.com/itemimages/4/887/E13764887.jpg" alt="라코스테 - 울트라 슬림 피케 폴로 셔츠"/>
-                </div>
-                <div class="meta">
-                    <h2 class="title-container">
-                        <a href="#" title="" class="title">
-                            라코스테
-                            <span class="paragraph-end"></span>
-                        </a>
-                        <a href="#" title="" class="subtitle">울트라 슬림 피케 폴로 셔츠</a>
-                    </h2>
-                    <div class="detail-container">
-                        <span class="uid">PH6749-42CC3</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="container"></div>
 
         <script>
             jQuery(function ($) {
                 var $container = $('.container');
-
                 $container.imagesLoaded(function () {
                     $container.masonry({
                         itemSelector: '.item',
@@ -117,6 +73,7 @@
                     });
                 });
             });
+            callFavorites();
         </script>
     </body>
 </html>
