@@ -31,7 +31,6 @@ function callFavorites(pos) {
     url = url + '?pos=' + pos;
   }
   var dummy = [];
-  var dummy_flag = false;
   $.ajax({
     url: url,
     async: false,
@@ -49,7 +48,6 @@ function callFavorites(pos) {
           });
         }
       } else {
-        dummy_flag = true;
         alert('error happened.');
       }
     },
