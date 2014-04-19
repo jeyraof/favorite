@@ -3,6 +3,6 @@
 @font-face{
 font-family:hg100;
 src:url('../font/hg_100-webfont.eot');
-src:local('※'), url('../font/hg_100-webfont.woff') format('woff')
+src:local('※'), url('../font/hg_100-webfont.woff') format('woff');
 /*본 폰트의 저작권은 김가경 (https://www.facebook.com/gagyeong.kim) 님께 있습니다.*/
 }

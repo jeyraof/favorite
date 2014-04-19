@@ -1,3 +1,5 @@
+@tile-width: 270px;
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -8,7 +10,7 @@ html {
 .central-wrapper {
   max-width: 1140px;
   margin: 0 auto;
-  overflow: hidden;
+  position: relative;
 }
 
 .paragraph-end {
@@ -27,10 +29,46 @@ html {
   width: 60px;
 }
 
+.new-item {
+  width: @tile-width;
+  height: 245px;
+  background: #ffffff;
+  border:1px solid #b6b6b6;
+  position: absolute;
+  right:0;
+  top: -245px;
+  z-index: 9;
+  padding: 10px;
+
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  transition: top .35s;
+  -webkit-transition: top .35s;
+  -moz-transition: top .35s;
+  -o-transition: top .35s;
+
+  &.on {
+    top: 30px;
+  }
+}
+
 .home-menu {
   background: #ffffff;
   border-bottom: 1px solid #b7b7b7;
   z-index: 10;
+
+  button.right {
+    float: right;
+    font-size: 75%;
+    margin-top: 5px;
+  }
 }
 
 .container {
@@ -39,7 +77,6 @@ html {
   padding: 10px;
 
   .item {
-    @tile-width: 270px;
     width: @tile-width;
     overflow: hidden;
     margin: 10px 5px;
@@ -89,7 +126,7 @@ html {
             text-decoration: underline;
           }
 
-          &.brand {
+          &.title {
             font-weight: bold;
             text-transform: uppercase;
             max-height: 18px;
@@ -98,7 +135,7 @@ html {
             display: block;
           }
 
-          &.model {
+          &.subtitle {
             font-weight: normal;
             max-height: 36px;
             min-height: 18px;
@@ -117,5 +154,20 @@ html {
         }
       }
     }
+  }
+}
+
+.footer {
+  position: relative;
+  height: 50px;
+
+  .loading-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -25px;
+    background: #e5e5e5;
+    width: 50px;
+    height: 50px;
   }
 }
