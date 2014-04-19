@@ -30,7 +30,7 @@ function callFavorites(pos) {
   if (pos) {
     url = url + '?pos=' + pos;
   }
-  var dummy = [];
+  var items = [];
   $.ajax({
     url: url,
     async: false,
@@ -43,7 +43,7 @@ function callFavorites(pos) {
         } else {
           $.each(data.favorites, function(i, favorite) {
             var favoriteHtml = createFavoriteHtml(favorite);
-            dummy.push(favoriteHtml);
+            items.push(favoriteHtml);
             global_pos = favorite.id;
           });
         }
@@ -53,8 +53,8 @@ function callFavorites(pos) {
     },
     dataType: 'json'
   });
-  $container.append(dummy)
-    .isotope('appended', dummy)
+  $container.append(items)
+    .isotope('appended', items)
     .isotope('layout');
 }
 
