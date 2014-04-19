@@ -3,3 +3,5 @@
 config.py
 favorite.db
 data/*
+*.pyc
+*.DS_Store
