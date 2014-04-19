@@ -55,7 +55,9 @@ function callFavorites(pos) {
     },
     dataType: 'json'
   });
-  $container.append(dummy);
+  $container.append(dummy)
+    .isotope('appended', dummy)
+    .isotope('layout');
 }
 
 function createFavoriteHtml(data) {

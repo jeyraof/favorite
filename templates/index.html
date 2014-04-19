@@ -63,15 +63,13 @@
         <div class="container"></div>
 
         <script>
-            jQuery(function ($) {
-                var $container = $('.container');
-                $container.imagesLoaded(function () {
-                    $container.masonry({
-                        itemSelector: '.item',
-                        columnWidth: 285,
-                        isAnimated: true
-                    });
-                });
+            var $container = $('.container');
+            $container.isotope({
+                masonry: {
+                    itemSelector: '.item',
+                    columnWidth: 285,
+                    isAnimated: true
+                }
             });
             callFavorites();
         </script>
