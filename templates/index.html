@@ -20,7 +20,7 @@
     <body>
         <div class="central-wrapper">
             <div class="new-item">
-                <form class="pure-form pure-form-stacked" action="#">
+                <form class="pure-form pure-form-stacked" action="{{ url_for('add_favorite') }}" data-validate="{{ url_for('validate_favorite') }}" method="post" enctype="multipart/form-data">
                     <fieldset class="pure-group">
                         <input name="title" type="text" placeholder="Title" class="pure-input-1">
                         <input name="subtitle" type="text" placeholder="Subtitle" class="pure-input-1">
@@ -29,7 +29,7 @@
 
                     <fieldset>
                         <div class="pure-controls">
-                            <input name="picture" type="file"/>
+                            <input name="pic" type="file"/>
                         </div>
 
                         <div class="pure-controls">
@@ -40,7 +40,7 @@
                         </div>
                     </fieldset>
 
-                    <button type="submit" class="pure-button pure-input-1 pure-button-primary">Submit</button>
+                    <button class="btn-new-submit pure-button pure-input-1 pure-button-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -101,17 +101,6 @@
                     <div class="detail-container">
                         <span class="uid">PH6749-42CC3</span>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="central-wrapper">
-                <hr/>
-                <div class="loading-container">
-                    <button class="pure-button">
-                        Load
-                    </button>
                 </div>
             </div>
         </div>
