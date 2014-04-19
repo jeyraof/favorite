@@ -5,16 +5,32 @@ html {
   background: #e5e5e5;
 }
 
-.home-menu {
-  background: #ffffff;
-  border-bottom: 1px solid #b7b7b7;
-  z-index: 10;
-}
-
 .central-wrapper {
   max-width: 1140px;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.paragraph-end {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 1)));
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, StartColorStr='#00ffffff', EndColorStr='#ffffff');
+  bottom: 0;
+  height: 25px;
+  max-height: 100%;
+  position: absolute;
+  right: 0;
+  width: 60px;
+}
+
+.home-menu {
+  background: #ffffff;
+  border-bottom: 1px solid #b7b7b7;
+  z-index: 10;
 }
 
 .container {
@@ -52,8 +68,53 @@ html {
       font-size: 14px;
       line-height: 17px;
 
-      .name {
-        font-family: hg100;
+      font-family: 'Roboto', sans-serif;
+
+      .title-container {
+        margin: 0;
+        padding: 0;
+        font-size: inherit;
+        line-height: inherit;
+        overflow: hidden;
+
+        a {
+          color: #333333;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 18px;
+          overflow: hidden;
+          white-space: nowrap;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          &.brand {
+            font-weight: bold;
+            text-transform: uppercase;
+            max-height: 18px;
+            min-height: 18px;
+            position: relative;
+            display: block;
+          }
+
+          &.model {
+            font-weight: normal;
+            max-height: 36px;
+            min-height: 18px;
+            position: relative;
+            display: block;
+          }
+        }
+
+      }
+
+      .detail-container {
+        .uid {
+          color: #aaaaaa;
+          font-size: 12px;
+          line-height: 15px;
+        }
       }
     }
   }
