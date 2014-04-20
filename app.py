@@ -3,6 +3,8 @@
 from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory
 from config import Config
 from database import db, Favorite, Url, Picture
+from time import time
+import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -42,6 +44,44 @@ def get_favorites(f_id=None):
             favorite_list.append(dump)
 
         return jsonify(ok=True, favorites=favorite_list)
+
+
+@app.route("/favorite/<int:f_id>/pic/add", methods=['POST'])
+def add_picture_to_favorite(f_id=0):
+    if not f_id > 0:
+        return jsonify(ok=False, msg=u'1')
+
+    if request.method == 'POST':
+        files = request.files.get('pic', None)
+        if files and allowed_file(files.filename):
+            filename = str(time()) + get_ext(files.filename)
+            path = os.path.join(Config.UPLOAD_DIR, filename)
+            files.save(path)
+
+            pic = Picture(favorite_id=f_id, path=path)
+            db.session.add(pic)
+            db.session.commit()
+
+            favorite = Favorite.query.filter_by(id=f_id).first()
+
+            return jsonify(ok=True,
+                           favorite_id=f_id,
+                           favorite_title=favorite.title,
+                           favorite_subtitle=favorite.subtitle,
+                           path=path)
+
+    return jsonify(ok=False, msg=u'2')
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1] in Config.ALLOWED_EXTENSIONS
+
+
+def get_ext(filename):
+    if '.' in filename:
+        return '.' + filename.rsplit('.', 1)[1]
+    else:
+        return None
 
 
 @app.route("/favorite/add", methods=['POST'])
