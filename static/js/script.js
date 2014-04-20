@@ -77,7 +77,9 @@ function callFavorites(pos) {
   });
   $container.append(items)
     .isotope('appended', items)
-    .isotope('layout');
+    .imagesLoaded(function() {
+      $container.isotope('layout');
+    })
 }
 
 function createFavoriteHtml(data) {
