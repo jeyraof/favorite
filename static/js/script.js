@@ -8,6 +8,7 @@ $(document).ready(function () {
     $newDiv.toggleClass('on');
   });
 
+  // new favorite
   var $newForm = $newDiv.find('form');
   $('.btn-new-submit').click(function() {
     $.post(
@@ -22,6 +23,27 @@ $(document).ready(function () {
       }
     )
   });
+
+  // upload picture
+  $('.empty > a').click(function() {
+    var $imgForm = $(this).siblings('form');
+    $imgForm.find('input.empty-pic').click();
+  });
+  $('.empty-pic').change(function() {
+    var $imgForm = $(this).parents('form');
+    var $thumb = $(this).parents('.thumb');
+    $imgForm.ajaxSubmit({
+      success: function(data) {
+        if (data.ok) {
+          var thumb_img = document.createElement('img');
+          thumb_img.setAttribute('src', data.path);
+          thumb_img.setAttribute('alt', data.favorite_title + ' - ' + data.favorite_subtitle);
+          $thumb.html($(thumb_img));
+        }
+      }
+    });
+  });
+
 });
 
 function callFavorites(pos) {
@@ -78,11 +100,13 @@ function createThumbHtml(data) {
     var thumb_empty = document.createElement('div');
     thumb_empty.className = 'empty';
     var empty_anchor = document.createElement('a');
+    empty_anchor.href = '#';
     var empty_icon = document.createElement('i');
     empty_icon.className = 'fa fa-picture-o';
     empty_anchor.appendChild(empty_icon);
     empty_anchor.appendChild(document.createTextNode(' Upload'));
     thumb_empty.appendChild(empty_anchor);
+    thumb_empty.appendChild(createPictureFormHtml(data));
     thumb.appendChild(thumb_empty);
   }
   return thumb;
@@ -95,7 +119,7 @@ function createMetaHtml(data) {
   title_container.className = 'title-container';
   var anchor_title = document.createElement('a');
   anchor_title.className = 'title';
-  anchor_title.setAttribute('href', '#');
+  anchor_title.href = '#';
   anchor_title.setAttribute('title', data.title);
   anchor_title.innerText = data.title;
   var anchor_subtitle = document.createElement('a');
@@ -118,4 +142,17 @@ function createMetaHtml(data) {
   meta.appendChild(title_container);
   meta.appendChild(detail_container);
   return meta;
+}
+
+function createPictureFormHtml(data) {
+  var form = document.createElement('form');
+  form.setAttribute('action', '/favorite/'+data.id+'/pic/add');
+  form.setAttribute('method', 'post');
+  form.setAttribute('enctype', 'multipart/form-data');
+  var input_file = document.createElement('input');
+  input_file.className = 'empty-pic';
+  input_file.type = 'file';
+  input_file.name = 'pic';
+  form.appendChild(input_file);
+  return form;
 }
