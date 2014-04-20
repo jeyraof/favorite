@@ -44,6 +44,25 @@ $(document).ready(function () {
     });
   });
 
+  // toggle taken
+  $('.summary-item.taken').click(function() {
+    var span_taken = $(this);
+    var item_id = span_taken.parents('.item').data('item-id');
+    var url = '/favorite/' + item_id + '/taken';
+    $.post(
+      url,
+      {},
+      function(data) {
+        if (data.ok) {
+          span_taken.toggleClass('on');
+        } else {
+          alert(data.msg || 'what the hell!');
+        }
+      }
+    )
+  });
+
+
 });
 
 function callFavorites(pos) {

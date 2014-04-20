@@ -116,5 +116,22 @@ def validate_favorite():
 def get_data(filename):
     return send_from_directory('data/', filename)
 
+
+@app.route("/favorite/<int:f_id>/taken", methods=['POST'])
+def toggle_taken(f_id=None):
+    if not f_id:
+        return jsonify(ok=False, msg=u'Invalid favorite item.')
+    else:
+        favorite = Favorite.query.filter_by(id=f_id).first()
+        if favorite.taken:
+            favorite.taken = False
+        else:
+            favorite.taken = True
+
+        db.session.add(favorite)
+        db.session.commit()
+
+        return jsonify(ok=True)
+
 if __name__ == '__main__':
     app.run()
