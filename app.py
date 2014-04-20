@@ -38,6 +38,9 @@ def get_favorites(f_id=None):
                 'title': favorite.title,
                 'subtitle': favorite.subtitle,
                 'uid': favorite.uid,
+                'taken': favorite.taken,
+                'url_count': favorite.urls.count(),
+                'picture_count': favorite.pictures.count(),
             }
             picture = Picture.query.filter_by(favorite_id=favorite.id).order_by('-id').first()
             dump['picture'] = picture.path if picture else None
