@@ -85,6 +85,7 @@ function callFavorites(pos) {
 function createFavoriteHtml(data) {
   var item = document.createElement('div');
   item.className = 'item';
+  item.setAttribute('data-item-id', data.id);
   item.appendChild(createThumbHtml(data));
   item.appendChild(createMetaHtml(data));
   return item;
@@ -143,6 +144,7 @@ function createMetaHtml(data) {
   detail_container.appendChild(span_uid);
   meta.appendChild(title_container);
   meta.appendChild(detail_container);
+  meta.appendChild(createSummaryHtml(data));
   return meta;
 }
 
@@ -157,4 +159,32 @@ function createPictureFormHtml(data) {
   input_file.name = 'pic';
   form.appendChild(input_file);
   return form;
+}
+
+function createSummaryHtml(data) {
+  var summary_container = document.createElement('div');
+  summary_container.className = 'summary-container';
+  var span_picture = document.createElement('span');
+  span_picture.className = 'summary-item picture';
+  var picture_fa = document.createElement('i');
+  picture_fa.className = 'fa fa-picture-o';
+  span_picture.appendChild(picture_fa);
+  span_picture.appendChild(document.createTextNode(' '+data.picture_count));
+  var span_url = document.createElement('span');
+  span_url.className = 'summary-item url';
+  var url_fa = document.createElement('i');
+  url_fa.className = 'fa fa-link';
+  span_url.appendChild(url_fa);
+  span_url.appendChild(document.createTextNode(' '+data.url_count));
+  var span_taken = document.createElement('span');
+  var taken_fa = document.createElement('i');
+  if (data.taken)
+    span_taken.className = 'summary-item taken on';
+  else
+    span_taken.className = 'summary-item taken';
+  taken_fa.className = 'fa fa-check-circle-o';
+  span_taken.appendChild(taken_fa);summary_container.appendChild(span_picture);
+  summary_container.appendChild(span_url);
+  summary_container.appendChild(span_taken);
+  return summary_container;
 }
