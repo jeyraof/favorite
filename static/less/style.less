@@ -182,6 +182,32 @@ html {
           line-height: 15px;
         }
       }
+
+      .summary-container {
+        margin-top: 5px;
+        border-top: 1px solid #cccccc;
+        padding-top: 5px;
+
+        .summary-item {
+          margin-right: 5px;
+          color: #aaaaaa;
+          font-size: 11px;
+          line-height: 13px;
+
+          &.taken {
+            color: #aaaaaa;
+            margin:0;
+            float:right;
+            font-size:15px;
+            line-height: 23px;
+            cursor: pointer;
+
+            &.on {
+              color: #88e22e;
+            }
+          }
+        }
+      }
     }
   }
 }
